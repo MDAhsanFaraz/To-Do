@@ -33,7 +33,10 @@ class UserRepository {
     try {
       const result = await User.findById(id).populate({ path: "todos" });
       return result;
-    } catch (error) {}
+    } catch (error) {
+      console.log("Something went wrong in user repo");
+      throw error;
+    }
   }
 
   async getAll() {
@@ -45,6 +48,17 @@ class UserRepository {
       throw error;
     }
   }
+
+  async getByEmail(data) {
+    try {
+      const result = await User.findOne(data);
+      return result;
+    } catch (error) {
+      console.log("Something went wrong in user repo");
+      throw error;
+    }
+  }
+
   async update(id, data) {
     try {
       const result = await User.findByIdAndUpdate(id, data, { new: true });

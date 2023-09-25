@@ -17,11 +17,18 @@ class UserService {
   async getWithToDo(id) {
     try {
       const user = await this.userRepository.getWithToDo(id);
-      return user;
+      return {
+        id: user.id,
+        name: user.name,
+        todos: user.todos,
+        createdAt: user.createdAt,
+        updatedAt: user.updatedAt,
+      };
     } catch (error) {
       console.log("something went wrong at service layer ");
       throw error;
     }
   }
 }
+
 export default UserService;
