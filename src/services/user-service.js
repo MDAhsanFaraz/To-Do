@@ -13,5 +13,15 @@ class UserService {
       throw error;
     }
   }
+
+  async getWithToDo(id) {
+    try {
+      const user = await this.userRepository.getWithToDo(id);
+      return user;
+    } catch (error) {
+      console.log("something went wrong at service layer ");
+      throw error;
+    }
+  }
 }
 export default UserService;

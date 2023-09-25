@@ -23,3 +23,21 @@ export const signup = async (req, res) => {
     });
   }
 };
+export const getWithToDo = async (req, res) => {
+  try {
+    const response = await userService.getWithToDo(req.body.id);
+    return res.status(201).json({
+      success: true,
+      message: "Successfully fetched  user with tasks",
+      data: response,
+      err: {},
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Something went wrong at controller",
+      data: {},
+      err: error,
+    });
+  }
+};
