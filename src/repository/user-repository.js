@@ -31,7 +31,8 @@ class UserRepository {
 
   async getWithToDo(id) {
     try {
-      const result = await User.findById(id).populate({ path: "to_do" });
+      const result = await User.findById(id).populate({ path: "todos" });
+      return result;
     } catch (error) {}
   }
 
