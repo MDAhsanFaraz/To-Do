@@ -2,7 +2,7 @@ import To_Do from "../models/to_do.js";
 class To_DoRepository {
   async create(data) {
     try {
-      const result = To_Do.create(data);
+      const result = await To_Do.create(data);
       return result;
     } catch (error) {
       console.log("Something went wrong in crud repo");
@@ -11,7 +11,7 @@ class To_DoRepository {
   }
   async destroy(id) {
     try {
-      const result = To_Do.findByIdAndDelete(id);
+      const result = await To_Do.findByIdAndDelete(id);
       return result;
     } catch (error) {
       console.log("Something went wrong in crud repo");
@@ -21,7 +21,7 @@ class To_DoRepository {
 
   async get(id) {
     try {
-      const result = To_Do.findById(id);
+      const result = await To_Do.findById(id);
       return result;
     } catch (error) {
       console.log("Something went wrong in crud repo");
@@ -31,7 +31,7 @@ class To_DoRepository {
 
   async getAll() {
     try {
-      const result = To_Do.find({});
+      const result = await To_Do.find({});
       return result;
     } catch (error) {
       console.log("Something went wrong in crud repo");
@@ -40,7 +40,7 @@ class To_DoRepository {
   }
   async update(id, data) {
     try {
-      const result = To_Do.findByIdAndUpdate(id, data, { new: true });
+      const result = await To_Do.findByIdAndUpdate(id, data, { new: true });
       return result;
     } catch (error) {
       console.log("Something went wrong in crud repo");
