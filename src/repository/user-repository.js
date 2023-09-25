@@ -5,7 +5,7 @@ class UserRepository {
       const result = await User.create(data);
       return result;
     } catch (error) {
-      console.log("Something went wrong in crud repo");
+      console.log("Something went wrong in user repo");
       throw error;
     }
   }
@@ -14,7 +14,7 @@ class UserRepository {
       const result = await User.findByIdAndDelete(id);
       return result;
     } catch (error) {
-      console.log("Something went wrong in crud repo");
+      console.log("Something went wrong in user repo");
       throw error;
     }
   }
@@ -24,9 +24,15 @@ class UserRepository {
       const result = await User.findById(id);
       return result;
     } catch (error) {
-      console.log("Something went wrong in crud repo");
+      console.log("Something went wrong in user repo");
       throw error;
     }
+  }
+
+  async getWithToDo(id) {
+    try {
+      const result = await User.findById(id).populate({ path: "to_do" });
+    } catch (error) {}
   }
 
   async getAll() {
@@ -34,7 +40,7 @@ class UserRepository {
       const result = await User.find({});
       return result;
     } catch (error) {
-      console.log("Something went wrong in crud repo");
+      console.log("Something went wrong in user repo");
       throw error;
     }
   }
@@ -43,7 +49,7 @@ class UserRepository {
       const result = await User.findByIdAndUpdate(id, data, { new: true });
       return result;
     } catch (error) {
-      console.log("Something went wrong in crud repo");
+      console.log("Something went wrong in user repo");
       throw error;
     }
   }

@@ -7,7 +7,6 @@ class To_DoService {
     this.userRepository = new UserRepository();
   }
   async create(userId, task) {
-    console.log(userId, task);
     try {
       const user = await this.userRepository.get(userId);
       const newTodo = await this.to_DoRepository.create({

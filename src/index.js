@@ -20,10 +20,7 @@ app.listen(PORT, async () => {
   await connect();
   console.log("Mongo db connected");
 
-  // const to_DoService = new To_DoService();
-  // const todo = await to_DoService.create(
-  //   "65116bd6f8d080692c0dcd12",
-  //   "running at 5 am in the morning"
-  // );
-  // console.log(todo);
+  const to_DoService = new To_DoService();
+  // const user = await to_DoService.create("65117bc30ec651171c6c58ef", "runnign");
+  // console.log(user);
 });
