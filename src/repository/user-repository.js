@@ -2,48 +2,54 @@ import User from "../models/user.js";
 class UserRepository {
   async create(data) {
     try {
-      const result = User.create(data);
+      const result = await User.create(data);
       return result;
     } catch (error) {
-      console.log("Something went wrong in crud repo");
+      console.log("Something went wrong in user repo");
       throw error;
     }
   }
   async destroy(id) {
     try {
-      const result = User.findByIdAndDelete(id);
+      const result = await User.findByIdAndDelete(id);
       return result;
     } catch (error) {
-      console.log("Something went wrong in crud repo");
+      console.log("Something went wrong in user repo");
       throw error;
     }
   }
 
   async get(id) {
     try {
-      const result = User.findById(id);
+      const result = await User.findById(id);
       return result;
     } catch (error) {
-      console.log("Something went wrong in crud repo");
+      console.log("Something went wrong in user repo");
       throw error;
     }
   }
 
+  async getWithToDo(id) {
+    try {
+      const result = await User.findById(id).populate({ path: "to_do" });
+    } catch (error) {}
+  }
+
   async getAll() {
     try {
-      const result = User.find({});
+      const result = await User.find({});
       return result;
     } catch (error) {
-      console.log("Something went wrong in crud repo");
+      console.log("Something went wrong in user repo");
       throw error;
     }
   }
   async update(id, data) {
     try {
-      const result = User.findByIdAndUpdate(id, data, { new: true });
+      const result = await User.findByIdAndUpdate(id, data, { new: true });
       return result;
     } catch (error) {
-      console.log("Something went wrong in crud repo");
+      console.log("Something went wrong in user repo");
       throw error;
     }
   }
