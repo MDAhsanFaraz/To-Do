@@ -7,7 +7,13 @@ class UserService {
   async signup(data) {
     try {
       const user = await this.userRepository.create(data);
-      return user;
+      const response = {
+        id: user.id,
+        email: user.email,
+        name: user.name,
+        createdAt: user.createdAt,
+      };
+      return response;
     } catch (error) {
       console.log("something went wrong at service layer ");
       throw error;

@@ -12,7 +12,7 @@ const router = express.Router();
 
 // user
 router.post("/signup", signup);
-router.post("/getWithTodos", getWithToDo);
+router.post("/getWithTodos", isAuthenticated, getWithToDo);
 router.post("/signin", signin);
 // todo
 router.post("/todos", isAuthenticated, createTodo);
