@@ -6,6 +6,7 @@ import {
   getWithToDo,
   signin,
 } from "../../controllers/user-controller.js";
+import { isAuthenticated } from "../../middlewares/isAuthenticated.js";
 
 const router = express.Router();
 
@@ -14,6 +15,6 @@ router.post("/signup", signup);
 router.post("/getWithTodos", getWithToDo);
 router.post("/signin", signin);
 // todo
-router.post("/todos", createTodo);
+router.post("/todos", isAuthenticated, createTodo);
 
 export default router;
