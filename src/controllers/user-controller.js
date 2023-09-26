@@ -23,6 +23,26 @@ export const signup = async (req, res) => {
     });
   }
 };
+
+export const signin = async (req, res) => {
+  try {
+    const token = await userService.signin(req.body);
+    return res.status(200).json({
+      success: true,
+      message: "Successfully loggen in",
+      data: token,
+      err: {},
+    });
+  } catch (err) {
+    return res.status(500).json({
+      message: "Something went wrong",
+      data: {},
+      success: false,
+      err: err,
+    });
+  }
+};
+
 export const getWithToDo = async (req, res) => {
   try {
     const response = await userService.getWithToDo(req.body.id);
