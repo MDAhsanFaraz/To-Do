@@ -33,8 +33,14 @@ class UserService {
         };
       }
       const token = await user.genJWT();
-      return token;
-    } catch (error) {}
+      const response = {
+        token: token,
+        id: user.id,
+      };
+      return response;
+    } catch (error) {
+      throw error;
+    }
   }
 
   async getWithToDo(id) {
